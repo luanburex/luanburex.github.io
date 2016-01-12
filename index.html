@@ -1,3 +1,400 @@
-<!DOCTYPE html><html lang="null"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Rex博客 | 拥有好奇心才懂得探索</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/pure-min.css"><link rel="stylesheet" type="text/css" href="/css/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Rex博客</h1><a id="logo" href="/.">Rex博客</a><p class="description">拥有好奇心才懂得探索</p></div><div id="nav-menu"><a href="/." class="current"><i class="icon-home"> Home</i></a><a href="/archives/"><i class="icon-archive"> Archive</i></a><a href="/about/"><i class="icon-about"> About</i></a><a href="/atom.xml"><i class="icon-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h2 class="post-title"><a href="/2016/01/08/maven使用本地JAR包/">maven使用本地JAR包</a></h2><div class="post-meta">2016-01-08</div><div class="post-content"><p>有些项目使用的jar包在maven的中央库中不存在，只有本地有，比方说oracle的jdbc包，那么可以使用本地的jar包通过maven来管理编译生成。使用本地jar包大致有两种方式：</p></div><p class="readmore"><a href="/2016/01/08/maven使用本地JAR包/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/01/08/HEXO安装笔记/">HEXO安装笔记</a></h2><div class="post-meta">2016-01-08</div><div class="post-content"><p>使用HEXO快速部署github的博客，至于什么是hexo ,github需要另行了解里。</p></div><p class="readmore"><a href="/2016/01/08/HEXO安装笔记/">Read More</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/01/08/hello-world/">Hello World</a></h2><div class="post-meta">2016-01-08</div><div class="post-content"><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p></div><p class="readmore"><a href="/2016/01/08/hello-world/">Read More</a></p></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search" class="search-form-input"/><input type="hidden" name="sitesearch" value="http://luanburex.github.io"/></form></div><div class="widget"><div class="widget-title">Categories</div></div><div class="widget"><div class="widget-title">Tags</div><div class="tagcloud"><a href="/tags/maven-java-安装部署/" style="font-size: 15px;">maven java 安装部署</a> <a href="/tags/hexo-安装部署-node-markdown/" style="font-size: 15px;">hexo 安装部署 node markdown</a></div></div><div class="widget"><div class="widget-title">Recent</div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/maven使用本地JAR包/">maven使用本地JAR包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/HEXO安装笔记/">HEXO安装笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title">Blogroll</div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><div id="footer">© <a href="/." rel="nofollow">Rex博客.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div><a id="rocket" href="#top" class="show"></a><script src="/js/jquery.min.js" type="text/javascript"></script>
-<script src="/js/totop.js" type="text/javascript"></script><script src="/js/fancybox.pack.js" type="text/javascript"></script>
-<script src="/js/jquery.fancybox.js" type="text/javascript"></script><link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css"></div></body></html>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Rex博客</title>
+  <meta name="author" content="ReX Ren">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Rex博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Rex博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Rex博客</a></h1>
+  <h2 class="subtitle">拥有好奇心才懂得探索</h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/atom.xml">RSS</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-12T08:33:43.000Z"><a href="/2016/01/12/maven入门（二）创建一个maven工程/">2016-01-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/01/12/maven入门（二）创建一个maven工程/">maven入门（二）创建一个maven工程</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>在这篇文章里，主要创建第一个maven工程，就是根据我们之前学到的基础信息，完成一个简单的实践。目标建立一个java工程，可以写java代码，然后打包成jar包。</p>
+<h2 id="u5B89_u88C5Maven"><a href="#u5B89_u88C5Maven" class="headerlink" title="安装Maven"></a>安装Maven</h2><p>第一篇安装已经有相关的说明，请参照</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/01/12/maven入门（二）创建一个maven工程/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-12T03:21:50.000Z"><a href="/2016/01/12/maven入门（一）安装和基本概念/">2016-01-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/01/12/maven入门（一）安装和基本概念/">maven入门（一）安装和基本概念</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="u4E3A_u4EC0_u4E48_u9700_u8981maven"><a href="#u4E3A_u4EC0_u4E48_u9700_u8981maven" class="headerlink" title="为什么需要maven"></a>为什么需要maven</h2><p>简单的说maven就是一个基于java的自动构建工具，之前有ant，那为什么要有maven呢。最简单的回答就是maven会更好。如果要问好在哪里，可能需要认真学习一下才会有比较深刻的认识了。<br>这里如果有人问自动构建是什么？用通俗简单的说，就是把你平时手工的生成源码，编译，打包，生成文档，部署等工作实现自动化，写个脚本就能搞定。这样不仅提高里编译测试甚至发布的效率，还降低了人工操作可能带来的错误。</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/01/12/maven入门（一）安装和基本概念/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-08T07:34:00.000Z"><a href="/2016/01/08/maven使用本地JAR包/">2016-01-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/01/08/maven使用本地JAR包/">maven使用本地JAR包</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>有些项目使用的jar包在maven的中央库中不存在，只有本地有，比方说oracle的jdbc包，那么可以使用本地的jar包通过maven来管理编译生成。使用本地jar包大致有两种方式：</p>
+<ol>
+<li>一种就是使用system scope</li>
+<li>把jar包安装到本地repository中
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/01/08/maven使用本地JAR包/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-08T06:37:52.000Z"><a href="/2016/01/08/HEXO安装笔记/">2016-01-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/01/08/HEXO安装笔记/">HEXO安装笔记</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>使用HEXO快速部署github的博客，至于什么是hexo ,github需要另行了解里。</p>
+<h2 id="u51C6_u5907_u6761_u4EF6"><a href="#u51C6_u5907_u6761_u4EF6" class="headerlink" title="准备条件"></a>准备条件</h2><p>需要提前安装node 和 git</p>
+<h2 id="u5B89_u88C5_u8FC7_u7A0B"><a href="#u5B89_u88C5_u8FC7_u7A0B" class="headerlink" title="安装过程"></a>安装过程</h2><p>最简单的安装步骤，如下的命令执行一遍<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g&#10;hexo init blog&#10;cd blog&#10;npm install&#10;hexo server</span><br></pre></td></tr></table></figure></p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2016/01/08/HEXO安装笔记/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-08T06:24:25.680Z"><a href="/2016/01/08/hello-world/">2016-01-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/01/08/hello-world/">Hello World</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:luanburex.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/maven/">maven</a><small>3</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/01/12/maven入门（二）创建一个maven工程/">maven入门（二）创建一个maven工程</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/maven入门（一）安装和基本概念/">maven入门（一）安装和基本概念</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/08/maven使用本地JAR包/">maven使用本地JAR包</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/08/HEXO安装笔记/">HEXO安装笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/08/hello-world/">Hello World</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">標籤</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/hexo/">hexo</a><small>1</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>3</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/maven/">maven</a><small>3</small></li>
+  
+    <li><a href="/tags/node/">node</a><small>1</small></li>
+  
+    <li><a href="/tags/安装部署/">安装部署</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 ReX Ren
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
