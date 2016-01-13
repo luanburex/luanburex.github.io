@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>自动化测试的思考（一） | Rex博客</title>
+  <meta name="author" content="ReX Ren">
+  
+  <meta name="description" content="自动化测试的开始自动化测试，从一个大家陌生的概念，到现在越来越多的人在关注使用自动化测试。似乎自动化测试已经成了一个“高级”。但是其实很多人对自动化测试本身有很多误解，自动化测试不是银弹，不是瑞士军刀。自动化测试并不能代替测试本身。很多领导或者客户了解到自动化测试，就都会有用自动化测试覆盖测试的冲动。在这种冲动下，投入大量的人力财力，经常是无功而返的。自动化测试到底怎么了？">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="自动化测试的思考（一）"/>
+  <meta property="og:site_name" content="Rex博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Rex博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Rex博客</a></h1>
+  <h2 class="subtitle">拥有好奇心才懂得探索</h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/atom.xml">RSS</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-12T09:15:45.000Z"><a href="/2016/01/12/自动化测试的思考（一）/">2016-01-12</a></time>
+      
+      
+  
+    <h1 class="title">自动化测试的思考（一）</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="u81EA_u52A8_u5316_u6D4B_u8BD5_u7684_u5F00_u59CB"><a href="#u81EA_u52A8_u5316_u6D4B_u8BD5_u7684_u5F00_u59CB" class="headerlink" title="自动化测试的开始"></a>自动化测试的开始</h2><p>自动化测试，从一个大家陌生的概念，到现在越来越多的人在关注使用自动化测试。似乎自动化测试已经成了一个“高级”。但是其实很多人对自动化测试本身有很多误解，自动化测试不是银弹，不是瑞士军刀。自动化测试并不能代替测试本身。很多领导或者客户了解到自动化测试，就都会有用自动化测试覆盖测试的冲动。在这种冲动下，投入大量的人力财力，经常是无功而返的。自动化测试到底怎么了？<br><a id="more"></a></p>
+<h2 id="u81EA_u52A8_u5316_u6D4B_u8BD5_u5E76_u6CA1_u6709_u60F3_u8C61_u7684_u90A3_u4E48_u5B8C_u7F8E"><a href="#u81EA_u52A8_u5316_u6D4B_u8BD5_u5E76_u6CA1_u6709_u60F3_u8C61_u7684_u90A3_u4E48_u5B8C_u7F8E" class="headerlink" title="自动化测试并没有想象的那么完美"></a>自动化测试并没有想象的那么完美</h2><p>自动化测试到底都有哪些问题？我们为什么会经常感觉做不下去了？为什么投入那么多，效果总是那么一点点。<br>自动化测试本身有自动测试自己的问题，随着大量投入地去做自动化测试，这些问题会越来越明显，比方说：</p>
+<ul>
+<li>编写维护自动化测试脚本成本太高了</li>
+<li>天天在跑自动化测试，发现的缺陷数量怎么就那么少</li>
+<li>自动化测试为什么就没有节约人力成本</li>
+<li>自动化测试为什么就你们几个能用，那么多手工测试人员就不能用起来吗？<br>这些问题，其实本身不是自动化测试的问题，而是把自动化测试本身放错了位置。就像开篇说的，自动化测试其实不是这样的。</li>
+</ul>
+<h2 id="u6211_u4EEC_u62FF_u81EA_u52A8_u5316_u6D4B_u8BD5_u600E_u4E48_u529E"><a href="#u6211_u4EEC_u62FF_u81EA_u52A8_u5316_u6D4B_u8BD5_u600E_u4E48_u529E" class="headerlink" title="我们拿自动化测试怎么办"></a>我们拿自动化测试怎么办</h2><p>自动化测试一般都是需要编写脚本，通过脚本的执行来达到测试的目的，一般被测系统稳定的话，那么脚本是不需要怎么维护的，反之的话，就比较恐怖了。所以要进行自动化测试，就需要下工夫去开发维护脚本，而且工作量不小。由于他有这种特性，所以自动化测试，尤其是针对业务的功能测试中，最好不要去拼命地覆盖全业务，覆盖所有案例，而且抓住重点核心业务进行回归测试。这样可以减少开发维护工作量，还能尽量保证重点业务的测试质量，测试性价比是最高的。<br><strong>原则1: 针对重点业务，进行回归的自动化测试</strong><br>另外，尽量针对较为稳定的业务，或者较为稳定的测试方式进行自动化测试，这样人力的投入主要集中的初期脚本的编写，而之后由于较为稳定，那么脚本的维护工作量也不会太大。当然，这种投入不是越早越好，很多项目经理都觉得自动化测试及早投入，这样我们在项目研发中就可以及早用，及早的享受到自动化测试带来的便利。其实自动化测试，一般要做环境比较稳定的情况再投入开发，这样可以减少维护的成本，另外对于不稳定的环境，执行自动化测试也没有太好的效果，经常跑出的脚本一堆问题，分析来半天其实就是不能用，这样测试的意义就不大了。<br><strong>原则2：针对稳定的业务（或接口），在环境比较稳定的情况，前期投入脚本开发，有利于减少后期维护成本</strong><br>还有很多自动化测试，几乎每天都在跑，老是发现脚本错误，怎么就没有真正的缺陷呢，出缺陷的概率这么多，就盲目地增加校验点，结果还是一样。其实不用为了发现不了缺陷而烦恼，自动化一般都是保证主要功能完整可用，这些是他的核心价值，而不是发现多少缺陷。<br><strong>原则3：自动化测试主要是为了保证主要功能完整可用，而不是为了多发现缺陷</strong><br>当然，还有些人，做自动化就是为了节约手工测试人员的人力成本，做着做着，发现做了那么长时间自动化测试，为什么人力成本没有减少。不减少我为什么做自动化测试啊？这也是一个误区，自动化测试并不能减少测试的人力成本，而是为了加快测试反馈，提升测试质量。我建议自动化测试可以跟自动化部署工具绑定，在每日构建的时候，自动化执行，可以更早的发现产品的问题，自动地反馈开发人员，从而提升开发修复缺陷的效率。<br><strong>原则4：自动化测试并不能减少测试的人力成本，而是为了加快测试反馈，提升测试质量</strong><br>还有一个问题，这个问题在初期开始做自动化测试的人，会比较容易走上的误区—-录制回放最好了。其实录制回放，并不好，录制的脚本很多时候是不能直接使用，而且业务或者系统发生变化，很有可能很难修改脚本需要重新录制恢复，这样的工作量也不小。而且还有很多人，自动化测试脚本应该跟业务能挂钩起来，让人一目了然我自动化测试脚本都做了些什么，脚本最好能做到<em>“可视化”</em>。其实这些看似的方便，都给脚本维护带来很多困难，业务和系统是在变化的，脚本是要不断维护，可视化和录制回放其实并不能提升效率，反而是为脚本维护增加工作量。建议如果有能力的话，对脚本本身进行管理即可，编写脚本不用录制回放，使用一些辅助工具，或者设计一些框架，编写脚本会更好。<br><strong>原则5：不要对录制回放抱有幻想了，可视化也不是一个好的想法</strong><br>最后一个问题，有很多人任务自动化测试执行这么方便，是否手工测试人员可以进行自动化测试啊？可以吗？很多人持不同观点，有的人任务测试其实要成为开发测试，有开发能力，去写自动化测试脚本；还有的人，觉得测试和自动化测试要分开，两个团队管理；还有的人任务，测试执行，测试数据编写等可以让手工人员参与。其实我觉得这都不是最好的想法。真正应该参与自动化测试的应该是开发。<br><strong>原则6:开发参与自动化测试，让开发和测试融合在一起</strong></p>
+<h2 id="u6700_u4F73_u5B9E_u8DF5"><a href="#u6700_u4F73_u5B9E_u8DF5" class="headerlink" title="最佳实践"></a>最佳实践</h2><p>说了这么多芝麻绿豆的，原则也好想法也好，是否有一套方法来支撑整个自动化测试呢，我想简单的说，我比较支持现在比较流行的说法分层测试。利用适宜的测试框架，按照分层测试的范围理论，结合较好的CI工具整合自动化测试。具体的做法我想在下面的章节一一解释说清。**</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/automation/">automation</a>, <a href="/tags/自动化测试/">自动化测试</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:luanburex.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/maven/">maven</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/01/12/自动化测试的思考（二）分层测试/">自动化测试的思考（二）分层测试</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/自动化测试的思考（一）/">自动化测试的思考（一）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/maven入门（二）创建一个maven工程/">maven入门（二）创建一个maven工程</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/maven入门（一）安装和基本概念/">maven入门（一）安装和基本概念</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/11/maven使用tomcat插件实现热部署/">maven使用tomcat插件实现热部署</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">標籤</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/automation/">automation</a><small>2</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>1</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>4</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/maven/">maven</a><small>4</small></li>
+  
+    <li><a href="/tags/node/">node</a><small>1</small></li>
+  
+    <li><a href="/tags/安装部署/">安装部署</a><small>5</small></li>
+  
+    <li><a href="/tags/自动化测试/">自动化测试</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 ReX Ren
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>maven | Rex博客</title>
+  <title>maven使用tomcat插件实现热部署 | Rex博客</title>
   <meta name="author" content="ReX Ren">
+  
+  <meta name="description" content="通过maven的tomcat插件，实现热部署安装。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="maven使用tomcat插件实现热部署"/>
   <meta property="og:site_name" content="Rex博客"/>
 
   
@@ -46,61 +48,64 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title category">maven</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-01-12T08:33:43.000Z"><a href="/2016/01/12/maven入门（二）创建一个maven工程/">2016-01-12</a></time>
-            
-              <h1 class="title"><a href="/2016/01/12/maven入门（二）创建一个maven工程/">maven入门（二）创建一个maven工程</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-01-12T03:21:50.000Z"><a href="/2016/01/12/maven入门（一）安装和基本概念/">2016-01-12</a></time>
-            
-              <h1 class="title"><a href="/2016/01/12/maven入门（一）安装和基本概念/">maven入门（一）安装和基本概念</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-01-11T02:24:27.000Z"><a href="/2016/01/11/maven使用tomcat插件实现热部署/">2016-01-11</a></time>
-            
-              <h1 class="title"><a href="/2016/01/11/maven使用tomcat插件实现热部署/">maven使用tomcat插件实现热部署</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-01-08T07:34:00.000Z"><a href="/2016/01/08/maven使用本地JAR包/">2016-01-08</a></time>
-            
-              <h1 class="title"><a href="/2016/01/08/maven使用本地JAR包/">maven使用本地JAR包</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-11T02:24:27.000Z"><a href="/2016/01/11/maven使用tomcat插件实现热部署/">2016-01-11</a></time>
+      
+      
+  
+    <h1 class="title">maven使用tomcat插件实现热部署</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>通过maven的tomcat插件，实现热部署安装。</p>
+<a id="more"></a>
+<p>首先要在pom.xml文件里，加入tomcat的插件说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;project&#62;&#10;  ...&#10;  &#60;build&#62;&#10;    ...&#10;    &#60;plugins&#62;&#10;      ...&#10;      &#60;plugin&#62;&#10;        &#60;groupId&#62;org.apache.tomcat.maven&#60;/groupId&#62;&#10;        &#60;artifactId&#62;tomcat6-maven-plugin&#60;/artifactId&#62;&#10;        &#60;version&#62;2.0-beta-1&#60;/version&#62;&#10;        &#60;configuration&#62;&#10;          &#60;systemProperties&#62;&#10;            &#60;example.value.1&#62;alpha&#60;/example.value.1&#62;&#10;            &#60;example.value.2&#62;beta&#60;/example.value.2&#62;&#10;          &#60;/systemProperties&#62;&#10;        &#60;/configuration&#62;&#10;      &#60;/plugin&#62;&#10;      ...&#10;    &#60;/plugins&#62;&#10;    ...&#10;  &#60;/build&#62;&#10;  ...&#10;&#60;/project&#62;</span><br></pre></td></tr></table></figure></p>
+<p>然后执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn tomcat:run</span><br></pre></td></tr></table></figure></p>
+<p>就会自动启动一个tomcat服务了</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/maven/">maven</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/java/">java</a>, <a href="/tags/maven/">maven</a>, <a href="/tags/安装部署/">安装部署</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

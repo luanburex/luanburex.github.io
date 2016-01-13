@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>自动化测试的思考（二）分层测试 | Rex博客</title>
+  <meta name="author" content="ReX Ren">
+  
+  <meta name="description" content="由于多种原因吧，自动化测试刚开始发展，都想去做手工测试代替，都想做黑盒的覆盖测试。结果，自动化测试维护成本过高，稳定性也不好，但是执行效率，回归起来又不错。越来越多的人在思考如何更好的做自动化测试。尤其是在敏捷开发盛行的年代，自动化测试已经成了软件开发测试过程中，重要的组成部分，那么到底怎么做自动化测试收效最高呢。目前较为流行的方式–分层测试。我比较推荐分层测试的金字塔说法：分层测试就是构建高效的测试金字塔，不同层次的测试可以用尽量低的成本防御不同类型的风险。说法慢抽象的，先来看个实例图，再做慢慢解释：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="自动化测试的思考（二）分层测试"/>
+  <meta property="og:site_name" content="Rex博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Rex博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Rex博客</a></h1>
+  <h2 class="subtitle">拥有好奇心才懂得探索</h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/atom.xml">RSS</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-12T09:18:22.000Z"><a href="/2016/01/12/自动化测试的思考（二）分层测试/">2016-01-12</a></time>
+      
+      
+  
+    <h1 class="title">自动化测试的思考（二）分层测试</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>由于多种原因吧，自动化测试刚开始发展，都想去做手工测试代替，都想做黑盒的覆盖测试。结果，自动化测试维护成本过高，稳定性也不好，但是执行效率，回归起来又不错。越来越多的人在思考如何更好的做自动化测试。尤其是在敏捷开发盛行的年代，自动化测试已经成了软件开发测试过程中，重要的组成部分，那么到底怎么做自动化测试收效最高呢。目前较为流行的方式–分层测试。<br>我比较推荐分层测试的金字塔说法：分层测试就是构建高效的测试金字塔，不同层次的测试可以用尽量低的成本防御不同类型的风险。<br>说法慢抽象的，先来看个实例图，再做慢慢解释：<br><img src="http://martinfowler.com/bliki/images/testPyramid/pyramid.png" alt="测试金子塔"><br><a id="more"></a><br>上面我们先看到了金字塔了，然后我以比较常见的web项目做例子来解释分层测试。诚如上面说的如果我们单纯做黑盒的自动化测试，其实就是在UI这个层次上，不断开发维护脚本，结果可能带来的风险就是人员的无限投入，却很难得到比较好的测试效果。而这个金子塔的意思就是将应用，分成不同层次的自动化测试，比方说UI就是通过界面进行端对端测试，一般是黑盒测试；service一般针对接口，服务，比方说如果你用REST方式构建web的话，那么可以对REST接口进行测试，还有比方说直接对HTTP接口进行测试，对webservice接口进行测试；而Unit这个包含的比较多了，简单的说在web应用的dao，service，controller，model这些可以写类似junit的单元测试，javascript，css也可以做前段的单元测试。这这个金子塔就说的，根据层次划分，不同层次的测试量不同， 越是在塔尖的，测试开发维护都比较复杂，那么测试的量就越小，而下层的单元测试则可进行比较高的覆盖测试。<br>简单的说，分层自动化测试，就是把我们单一看着UI的功能自动化测试，将自动化测试扩展到不同的软件层次上，进行测试。<br>这种测试方式，相比于传统的自动化测试，会有几个改变：</p>
+<ul>
+<li>将开发拉入测试：其实测试工作也是开发一个很重要的工作内容，传统的开发测试分的很细的方式，不利于分层测试，像单元测试，还是需要开发多多投入。</li>
+<li>将测试引入开发：分层的测试，需要对被测系统的开发结构有认识，至少你要知道你覆盖了多少了吧，甚至开发大致怎么实现的，不然UI前面对那些接口也不知道那很难评估测试结果的。</li>
+<li>最好跟持续集成配合使用：重复利用自动化测试的执行成本低的效率，在工程集成完毕前后，更加自动地执行测试，及时的反馈测试结果，从而更好地提高测试效率。</li>
+<li>使用Mock来实现分层测试，因为是分层那么就可能有隔离一些模块或者外系统，那么就可以用Mock来模拟这些隔离的模块，进行测试。</li>
+<li>需要合理的评估测试覆盖，不同层次的测试程度都需要合理的评估，这个范围的控制是保证分层测试测试质量的最核心的规划，这个才是成功关键。</li>
+</ul>
+<p>综上所述，分层自动化测试是追求覆盖的传统自动化测试的一种修正，充分利用自动化测试的优点，尽量规避自动化测试的缺点。当然分层测试也有些要注意的问题：</p>
+<ul>
+<li>测试重复：分层可能对测试是重复的，在上层测过了，下层还继续测。从测试角度上说是重复测试，但是从整个流程看测试的话，不同层次的测试，属于过程的不同阶段，比方说单元测试，可以在编译后进行测试，在集成前就可以发现问题，而UI的自动化测试则更加滞后一点，功能不同效果不同，测试的重复还是可以忍受的。</li>
+<li>测试遗漏：这个就很需要对测试覆盖的规划能力，而且这里要说明的一点，自动化测试不能或者很难做到全覆盖测试。手工测试还是不能放下的，而手工做到全覆盖是有必要的。</li>
+<li>测试复杂度，分层测试需要工具比较多，人员能力比较强，要控制那么多工具进行测试，还要对业务，甚至开发有了解，还要开发人员参与进来，投入也不小。</li>
+</ul>
+<p>不管分层测试有多少难度，他是目前解决自动化测试开发维护的一个比较好的方案。如果要大规模使用自动化测试，我想分层的思想应该是不容忽视的。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/automation/">automation</a>, <a href="/tags/自动化测试/">自动化测试</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:luanburex.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/maven/">maven</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/01/12/自动化测试的思考（二）分层测试/">自动化测试的思考（二）分层测试</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/自动化测试的思考（一）/">自动化测试的思考（一）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/maven入门（二）创建一个maven工程/">maven入门（二）创建一个maven工程</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/maven入门（一）安装和基本概念/">maven入门（一）安装和基本概念</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/11/maven使用tomcat插件实现热部署/">maven使用tomcat插件实现热部署</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">標籤</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/automation/">automation</a><small>2</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>1</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>4</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/maven/">maven</a><small>4</small></li>
+  
+    <li><a href="/tags/node/">node</a><small>1</small></li>
+  
+    <li><a href="/tags/安装部署/">安装部署</a><small>5</small></li>
+  
+    <li><a href="/tags/自动化测试/">自动化测试</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 ReX Ren
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
