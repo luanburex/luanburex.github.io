@@ -4,7 +4,7 @@
   <subtitle><![CDATA[拥有好奇心才懂得探索]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://luanburex.github.io/"/>
-  <updated>2016-01-12T09:22:05.346Z</updated>
+  <updated>2016-01-14T06:33:20.510Z</updated>
   <id>http://luanburex.github.io/</id>
   
   <author>
@@ -13,6 +13,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[maven使用svn更新代码]]></title>
+    <link href="http://luanburex.github.io/2016/01/14/maven%E4%BD%BF%E7%94%A8svn%E6%9B%B4%E6%96%B0%E4%BB%A3%E7%A0%81/"/>
+    <id>http://luanburex.github.io/2016/01/14/maven使用svn更新代码/</id>
+    <published>2016-01-14T05:47:38.000Z</published>
+    <updated>2016-01-14T06:33:20.510Z</updated>
+    <content type="html"><![CDATA[<p>通过maven的<a href="http://maven.apache.org/scm/maven-scm-plugin/" target="_blank" rel="external">scm plugin</a>更新工程代码，甚至可以做一些简单的svn操作。如果在windows先下载<a href="http://sourceforge.net/projects/win32svn/files/1.8.14/Setup-Subversion-1.8.14.msi/download" target="_blank" rel="external">subvesion的windows版本</a></p>
+<p>首先要在pom.xml文件中设置scm配置，主要是设置Svn地址，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;scm&#62;&#10;    &#60;connection&#62;scm:svn:http://somerepository.com/svn_repo/trunk&#60;/connection&#62;&#10;    &#60;developerConnection&#62;scm:svn:https://somerepository.com/svn_repo/trunk&#60;/developerConnection&#62;&#10;    &#60;url&#62;http://somerepository.com/view.cvs&#60;/url&#62;&#10;&#60;/scm&#62;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>然后配置scm插件，要在plugins里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;plugins&#62;&#10;      &#60;plugin&#62;&#10;        &#60;groupId&#62;org.apache.maven.plugins&#60;/groupId&#62;&#10;        &#60;artifactId&#62;maven-scm-plugin&#60;/artifactId&#62;&#10;        &#60;version&#62;1.9.4&#60;/version&#62;&#10;        &#60;configuration&#62;&#10;          &#60;goals&#62;install&#60;/goals&#62;&#10;        &#60;/configuration&#62;&#10;      &#60;/plugin&#62;&#10;    &#60;/plugins&#62;</span><br></pre></td></tr></table></figure></p>
+<p>配置用户名密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;plugins&#62;&#10;     &#60;plugin&#62;&#10;       &#60;groupId&#62;org.apache.maven.plugins&#60;/groupId&#62;&#10;       &#60;artifactId&#62;maven-scm-plugin&#60;/artifactId&#62;&#10;       &#60;version&#62;1.9.4&#60;/version&#62;&#10;       &#60;configuration&#62;&#10;         &#60;username&#62;username&#60;/username&#62;&#10;         &#60;password&#62;password&#60;/password&#62;&#10;       &#60;/configuration&#62;&#10;     &#60;/plugin&#62;&#10;   &#60;/plugins&#62;</span><br></pre></td></tr></table></figure></p>
+<p>然后，就是命令的执行，我一般是使用更新<code>mvn scm:update</code>具体的命令行，我这里引用官方文档里的内容：</p>
+<p>scm:add - command to add file<br>scm:bootstrap - command to checkout and build a project<br>scm:branch - branch the project<br>scm:changelog - command to show the source code revisions<br>scm:check-local-modification - fail the build if there is any local modifications<br>scm:checkin - command for commiting changes<br>scm:checkout - command for getting the source code<br>scm:diff - command for showing the difference of the working copy with the remote one<br>scm:edit - command for starting edit on the working copy<br>scm:export - command to get a fresh exported copy<br>scm:list - command for get the list of project files<br>scm:remove - command to mark a set of files for deletion<br>scm:status - command for showing the scm status of the working copy<br>scm:tag - command for tagging a certain revision<br>scm:unedit - command to stop editing the working copy<br>scm:update - command for updating the working copy with the latest changes<br>scm:update-subprojects - command for updating all projects in a multi project build<br>scm:validate - validate the scm information in the pom</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>通过maven的<a href="http://maven.apache.org/scm/maven-scm-plugin/">scm plugin</a>更新工程代码，甚至可以做一些简单的svn操作。如果在windows先下载<a href="http://sourceforge.net/projects/win32svn/files/1.8.14/Setup-Subversion-1.8.14.msi/download">subvesion的windows版本</a></p>
+<p>首先要在pom.xml文件中设置scm配置，主要是设置Svn地址，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;scm&#62;&#10;    &#60;connection&#62;scm:svn:http://somerepository.com/svn_repo/trunk&#60;/connection&#62;&#10;    &#60;developerConnection&#62;scm:svn:https://somerepository.com/svn_repo/trunk&#60;/developerConnection&#62;&#10;    &#60;url&#62;http://somerepository.com/view.cvs&#60;/url&#62;&#10;&#60;/scm&#62;</span><br></pre></td></tr></table></figure></p>]]>
+    
+    </summary>
+    
+      <category term="java" scheme="http://luanburex.github.io/tags/java/"/>
+    
+      <category term="maven" scheme="http://luanburex.github.io/tags/maven/"/>
+    
+      <category term="安装部署" scheme="http://luanburex.github.io/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
+    
+      <category term="maven" scheme="http://luanburex.github.io/categories/maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[配置Maven使用grunt]]></title>
+    <link href="http://luanburex.github.io/2016/01/13/%E9%85%8D%E7%BD%AEMaven%E4%BD%BF%E7%94%A8grunt/"/>
+    <id>http://luanburex.github.io/2016/01/13/配置Maven使用grunt/</id>
+    <published>2016-01-13T06:30:46.000Z</published>
+    <updated>2016-01-14T05:37:24.946Z</updated>
+    <content type="html"><![CDATA[<p>毋庸置疑，前端工程使用grunt/gulp构建，更加的方便自然，而maven可以作为整个项目的管理，那么就有一个现实的问题，需要通过maven来操作grunt进行前端构建。这种构建应该有两种形式，一种是前后端分别的项目；前后台都在一个项目。虽然两种形式的maven结构不同，但是需要调用grunt这个是无法改变的。不过我们下面讲的主要是一个单独的前端项目，怎么用maven构建。<br><a id="more"></a></p>
+<h2 id="u9996_u5148_u8981_u5B89_u88C5_u597Dgrunt_u5DE5_u7A0B"><a href="#u9996_u5148_u8981_u5B89_u88C5_u597Dgrunt_u5DE5_u7A0B" class="headerlink" title="首先要安装好grunt工程"></a>首先要安装好grunt工程</h2><p>这种前端工程的安装方法，具体参照grunt的教程，但是一般会有Gruntfile.js和package.json文件。</p>
+<h2 id="u521B_u5EFApom_u6587_u4EF6_uFF0C_u4F7F_u7528Front_maven_u63D2_u4EF6"><a href="#u521B_u5EFApom_u6587_u4EF6_uFF0C_u4F7F_u7528Front_maven_u63D2_u4EF6" class="headerlink" title="创建pom文件，使用Front maven插件"></a>创建pom文件，使用Front maven插件</h2><p>使用<a href="http://mvnrepository.com/artifact/com.github.eirslett/frontend-maven-plugin" target="_blank" rel="external">fronted maven plugin</a>插件可以把node.js放入到你的工程里，并不需要安装即可执行。<br>在maven里的pom.xml文件中,首先添加插件的定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;plugin&#62;&#10;   &#60;groupId&#62;com.github.eirslett&#60;/groupId&#62;&#10;   &#60;artifactId&#62;frontend-maven-plugin&#60;/artifactId&#62;&#10;   &#60;version&#62;0.0.16&#60;/version&#62;&#10;   &#60;!-- executions go here --&#62;&#10;&#60;/plugin&#62;</span><br></pre></td></tr></table></figure></p>
+<p>然后把安装node.js和npm的工具的执行，下载的目录会放到node目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> &#60;executions&#62;&#10;&#10;            &#60;execution&#62;&#10;                &#60;id&#62;install node and npm&#60;/id&#62;&#10;                &#60;goals&#62;&#10;                    &#60;goal&#62;install-node-and-npm&#60;/goal&#62;&#10;                &#60;/goals&#62;&#10;                &#60;configuration&#62;&#10;                    &#60;nodeVersion&#62;v0.12.6&#60;/nodeVersion&#62;&#10;                    &#60;npmVersion&#62;2.11.2&#60;/npmVersion&#62;&#10;                &#60;/configuration&#62;&#10;            &#60;/execution&#62;&#10;&#60;/executions&#62;</span><br></pre></td></tr></table></figure></p>
+<p>下一步就是修改package.json文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;  &#34;name&#34;:&#34;frontend-tools&#34;,&#10;  &#34;version&#34;:&#34;0.0.1&#34;,&#10;  &#34;dependencies&#34;: &#123;&#10;    &#34;grunt&#34;: &#34;~0.4.5&#34;,&#10;    &#34;grunt-cli&#34;: &#34;~0.1.13&#34;,&#10;    &#34;grunt-contrib-jshint&#34;:&#34;~0.10.0&#34;&#10;  &#125;,&#10;  &#34;devDependencies&#34;: &#123;&#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来就是在pom文件中加入执行npm install 的部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;execution&#62;&#10;  &#60;id&#62;npm install&#60;/id&#62;&#10;  &#60;phase&#62;generate-resources&#60;/phase&#62;&#10;  &#60;goals&#62;&#10;    &#60;goal&#62;npm&#60;/goal&#62;&#10;  &#60;/goals&#62;&#10;  &#60;configuration&#62;&#10;    &#60;arguments&#62;install&#60;/arguments&#62;&#10;  &#60;/configuration&#62;&#10;&#60;/execution&#62;</span><br></pre></td></tr></table></figure></p>
+<p>然后就到了重点了，执行grunt的构建<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;execution&#62;&#10;    &#60;id&#62;grunt build&#60;/id&#62;&#10;    &#60;goals&#62;&#10;        &#60;goal&#62;grunt&#60;/goal&#62;&#10;    &#60;/goals&#62;&#10;    &#60;configuration&#62;&#10;        &#60;arguments&#62;build --no-color&#60;/arguments&#62;&#10;    &#60;/configuration&#62;&#10;&#60;/execution&#62;</span><br></pre></td></tr></table></figure></p>
+<p>最后好好修改Gruntfile.js文件，根据自己的需求就构建工程，使用命令<code>mvn package</code></p>
+<h2 id="u5B8C_u6210_u7684_u4F8B_u5B50"><a href="#u5B8C_u6210_u7684_u4F8B_u5B50" class="headerlink" title="完成的例子"></a>完成的例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&#62;&#10;&#60;project xmlns=&#34;http://maven.apache.org/POM/4.0.0&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xsi:schemaLocation=&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;&#62;&#10;    &#60;modelVersion&#62;4.0.0&#60;/modelVersion&#62;&#10;&#10;    &#60;groupId&#62;com.asiainfo&#60;/groupId&#62;&#10;    &#60;artifactId&#62;aiga-web&#60;/artifactId&#62;&#10;    &#60;version&#62;1.0.0&#60;/version&#62;&#10;    &#60;packaging&#62;pom&#60;/packaging&#62;&#10;&#10;&#10;    &#60;build&#62;&#10;        &#60;plugins&#62;&#10;            &#60;plugin&#62;&#10;                &#60;groupId&#62;com.github.eirslett&#60;/groupId&#62;&#10;                &#60;artifactId&#62;frontend-maven-plugin&#60;/artifactId&#62;&#10;                &#60;!-- NB! Set &#60;version&#62; to the latest released version of frontend-maven-plugin, like in README.md --&#62;&#10;                &#60;version&#62;0.0.26&#60;/version&#62;&#10;&#10;               &#60;executions&#62;&#10;&#10;                    &#60;execution&#62;&#10;                        &#60;id&#62;install node and npm&#60;/id&#62;&#10;                        &#60;goals&#62;&#10;                            &#60;goal&#62;install-node-and-npm&#60;/goal&#62;&#10;                        &#60;/goals&#62;&#10;                        &#60;configuration&#62;&#10;                            &#60;nodeVersion&#62;v0.12.6&#60;/nodeVersion&#62;&#10;                            &#60;npmVersion&#62;2.11.2&#60;/npmVersion&#62;&#10;                        &#60;/configuration&#62;&#10;                    &#60;/execution&#62;&#10;&#10;                     &#60;execution&#62;&#10;                        &#60;id&#62;npm install&#60;/id&#62;&#10;                        &#60;goals&#62;&#10;                            &#60;goal&#62;npm&#60;/goal&#62;&#10;                        &#60;/goals&#62;&#10;                        &#60;!-- Optional configuration which provides for running any npm command --&#62;&#10;                        &#60;configuration&#62;&#10;                            &#60;arguments&#62;install&#60;/arguments&#62;&#10;                        &#60;/configuration&#62;&#10;                    &#60;/execution&#62;&#10;&#10;                    &#60;execution&#62;&#10;                        &#60;id&#62;grunt build&#60;/id&#62;&#10;                        &#60;goals&#62;&#10;                            &#60;goal&#62;grunt&#60;/goal&#62;&#10;                        &#60;/goals&#62;&#10;                        &#60;configuration&#62;&#10;                            &#60;arguments&#62;build --no-color&#60;/arguments&#62;&#10;                        &#60;/configuration&#62;&#10;                    &#60;/execution&#62;&#10;&#10;&#10;            &#9;&#60;/executions&#62;&#10;            &#60;/plugin&#62;&#10;        &#60;/plugins&#62;&#10;    &#60;/build&#62;&#10;&#10;&#60;/project&#62;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>毋庸置疑，前端工程使用grunt/gulp构建，更加的方便自然，而maven可以作为整个项目的管理，那么就有一个现实的问题，需要通过maven来操作grunt进行前端构建。这种构建应该有两种形式，一种是前后端分别的项目；前后台都在一个项目。虽然两种形式的maven结构不同，但是需要调用grunt这个是无法改变的。不过我们下面讲的主要是一个单独的前端项目，怎么用maven构建。<br>]]>
+    
+    </summary>
+    
+      <category term="java" scheme="http://luanburex.github.io/tags/java/"/>
+    
+      <category term="maven" scheme="http://luanburex.github.io/tags/maven/"/>
+    
+      <category term="安装部署" scheme="http://luanburex.github.io/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
+    
+      <category term="maven" scheme="http://luanburex.github.io/categories/maven/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[自动化测试的思考（二）分层测试]]></title>

@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>maven使用svn更新代码 | Rex博客</title>
+  <meta name="author" content="ReX Ren">
+  
+  <meta name="description" content="通过maven的scm plugin更新工程代码，甚至可以做一些简单的svn操作。如果在windows先下载subvesion的windows版本
+首先要在pom.xml文件中设置scm配置，主要是设置Svn地址，例如：1&amp;#60;scm&amp;#62;&amp;#10;    &amp;#60;connection&amp;#62;scm:svn:http://somerepository.com/svn_repo/trunk&amp;#60;/connection&amp;#62;&amp;#10;    &amp;#60;developerConnection&amp;#62;scm:svn:https://somerepository.com/svn_repo/trunk&amp;#60;/developerConnection&amp;#62;&amp;#10;    &amp;#60;url&amp;#62;http://somerepository.com/view.cvs&amp;#60;/url&amp;#62;&amp;#10;&amp;#60;/scm&amp;#62;">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="maven使用svn更新代码"/>
+  <meta property="og:site_name" content="Rex博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Rex博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Rex博客</a></h1>
+  <h2 class="subtitle">拥有好奇心才懂得探索</h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/atom.xml">RSS</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-14T05:47:38.000Z"><a href="/2016/01/14/maven使用svn更新代码/">2016-01-14</a></time>
+      
+      
+  
+    <h1 class="title">maven使用svn更新代码</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>通过maven的<a href="http://maven.apache.org/scm/maven-scm-plugin/" target="_blank" rel="external">scm plugin</a>更新工程代码，甚至可以做一些简单的svn操作。如果在windows先下载<a href="http://sourceforge.net/projects/win32svn/files/1.8.14/Setup-Subversion-1.8.14.msi/download" target="_blank" rel="external">subvesion的windows版本</a></p>
+<p>首先要在pom.xml文件中设置scm配置，主要是设置Svn地址，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;scm&#62;&#10;    &#60;connection&#62;scm:svn:http://somerepository.com/svn_repo/trunk&#60;/connection&#62;&#10;    &#60;developerConnection&#62;scm:svn:https://somerepository.com/svn_repo/trunk&#60;/developerConnection&#62;&#10;    &#60;url&#62;http://somerepository.com/view.cvs&#60;/url&#62;&#10;&#60;/scm&#62;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>然后配置scm插件，要在plugins里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;plugins&#62;&#10;      &#60;plugin&#62;&#10;        &#60;groupId&#62;org.apache.maven.plugins&#60;/groupId&#62;&#10;        &#60;artifactId&#62;maven-scm-plugin&#60;/artifactId&#62;&#10;        &#60;version&#62;1.9.4&#60;/version&#62;&#10;        &#60;configuration&#62;&#10;          &#60;goals&#62;install&#60;/goals&#62;&#10;        &#60;/configuration&#62;&#10;      &#60;/plugin&#62;&#10;    &#60;/plugins&#62;</span><br></pre></td></tr></table></figure></p>
+<p>配置用户名密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;plugins&#62;&#10;     &#60;plugin&#62;&#10;       &#60;groupId&#62;org.apache.maven.plugins&#60;/groupId&#62;&#10;       &#60;artifactId&#62;maven-scm-plugin&#60;/artifactId&#62;&#10;       &#60;version&#62;1.9.4&#60;/version&#62;&#10;       &#60;configuration&#62;&#10;         &#60;username&#62;username&#60;/username&#62;&#10;         &#60;password&#62;password&#60;/password&#62;&#10;       &#60;/configuration&#62;&#10;     &#60;/plugin&#62;&#10;   &#60;/plugins&#62;</span><br></pre></td></tr></table></figure></p>
+<p>然后，就是命令的执行，我一般是使用更新<code>mvn scm:update</code>具体的命令行，我这里引用官方文档里的内容：</p>
+<p>scm:add - command to add file<br>scm:bootstrap - command to checkout and build a project<br>scm:branch - branch the project<br>scm:changelog - command to show the source code revisions<br>scm:check-local-modification - fail the build if there is any local modifications<br>scm:checkin - command for commiting changes<br>scm:checkout - command for getting the source code<br>scm:diff - command for showing the difference of the working copy with the remote one<br>scm:edit - command for starting edit on the working copy<br>scm:export - command to get a fresh exported copy<br>scm:list - command for get the list of project files<br>scm:remove - command to mark a set of files for deletion<br>scm:status - command for showing the scm status of the working copy<br>scm:tag - command for tagging a certain revision<br>scm:unedit - command to stop editing the working copy<br>scm:update - command for updating the working copy with the latest changes<br>scm:update-subprojects - command for updating all projects in a multi project build<br>scm:validate - validate the scm information in the pom</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/maven/">maven</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/java/">java</a>, <a href="/tags/maven/">maven</a>, <a href="/tags/安装部署/">安装部署</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:luanburex.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/maven/">maven</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/01/14/maven使用svn更新代码/">maven使用svn更新代码</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/13/配置Maven使用grunt/">配置Maven使用grunt</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/自动化测试的思考（二）分层测试/">自动化测试的思考（二）分层测试</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/自动化测试的思考（一）/">自动化测试的思考（一）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/maven入门（二）创建一个maven工程/">maven入门（二）创建一个maven工程</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">標籤</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/automation/">automation</a><small>2</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>1</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>6</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/maven/">maven</a><small>6</small></li>
+  
+    <li><a href="/tags/node/">node</a><small>1</small></li>
+  
+    <li><a href="/tags/安装部署/">安装部署</a><small>7</small></li>
+  
+    <li><a href="/tags/自动化测试/">自动化测试</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 ReX Ren
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
