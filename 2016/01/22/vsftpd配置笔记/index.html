@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vsftpd配置笔记 | Rex博客</title>
+  <meta name="author" content="ReX Ren">
+  
+  <meta name="description" content="vsftpd安装现在比较新的版本的redhat里都是安装vsftpd的，可以通过rpm -qa | grep vsftpd来查看是否已经安装了。如果木有安装，那么，用rpm安装把1rpm -ivh vsftpd-1.1.3-8.i386.rpm
+启动/重新启动/停止vsftpd服务终端命令窗口运行以">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="vsftpd配置笔记"/>
+  <meta property="og:site_name" content="Rex博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Rex博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Rex博客</a></h1>
+  <h2 class="subtitle">拥有好奇心才懂得探索</h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/atom.xml">RSS</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-01-22T02:19:15.000Z"><a href="/2016/01/22/vsftpd配置笔记/">2016-01-22</a></time>
+      
+      
+  
+    <h1 class="title">vsftpd配置笔记</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="vsftpd_u5B89_u88C5"><a href="#vsftpd_u5B89_u88C5" class="headerlink" title="vsftpd安装"></a>vsftpd安装</h2><p>现在比较新的版本的redhat里都是安装vsftpd的，可以通过<code>rpm -qa | grep vsftpd</code>来查看是否已经安装了。<br>如果木有安装，那么，用rpm安装把<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh vsftpd-1.1.3-8.i386.rpm</span><br></pre></td></tr></table></figure></p>
+<h2 id="u542F_u52A8/_u91CD_u65B0_u542F_u52A8/_u505C_u6B62vsftpd_u670D_u52A1"><a href="#u542F_u52A8/_u91CD_u65B0_u542F_u52A8/_u505C_u6B62vsftpd_u670D_u52A1" class="headerlink" title="启动/重新启动/停止vsftpd服务"></a>启动/重新启动/停止vsftpd服务</h2><p>终端命令窗口运行以下命令：<br>启动vsftpd服务:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@ai root] /etc/rc.d/init.d/vsftpd start</span><br></pre></td></tr></table></figure></p>
+<p>重新启动vsftpd服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@ai root] /etc/rc.d/init.d/vsftpd restart</span><br></pre></td></tr></table></figure></p>
+<p>关闭vsftpd服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@ai root] /etc/rc.d/init.d/vsftpd stop</span><br></pre></td></tr></table></figure></p>
+<p>在有些系统里，启停服务使用service比方说<code>service vsftpd restart</code><br>启动服务后就可以通过ftp工具，或者直接使用windows的文件浏览器打开ftp了</p>
+<h2 id="u914D_u7F6E"><a href="#u914D_u7F6E" class="headerlink" title="配置"></a>配置</h2><h3 id="u914D_u7F6E_u6587_u4EF6_u5982_u4E0B_uFF1A"><a href="#u914D_u7F6E_u6587_u4EF6_u5982_u4E0B_uFF1A" class="headerlink" title="配置文件如下："></a>配置文件如下：</h3><p>vsftpd.ftpusers：位于/etc目录下。它指定了哪些用户账户不能访问FTP服务器，例如root等。<br>vsftpd.user_list：位于/etc目录下。该文件里的用户账户在默认情况下也不能访问FTP服务器，仅当vsftpd .conf配置文件里启用userlist_enable=NO选项时才允许访问。<br>vsftpd.conf：位于/etc/vsftpd目录下。它是一个文本文件，我们可以用Kate、Vi等文本编辑工具对它进行修改，以此来自定义用户登录控制、用户权限控制、超时设置、服务器功能选项、服务器性能选项、服务器响应消息等FTP服务器的配置。</p>
+<p>(1)用户登录控制<br>anonymous_enable=YES，允许匿名用户登录。<br>no_anon_password=YES，匿名用户登录时不需要输入密码。<br>local_enable=YES，允许本地用户登录。<br>deny_email_enable=YES，可以创建一个文件保存某些匿名电子邮件的黑名单，以防止这些人使用Dos攻击。<br>banned_email_file=/etc/vsftpd.banned_emails，当启用deny_email_enable功能时，所需的电子邮件黑名单保存路径(默认为/etc/vsftpd.banned_emails)。<br>(2)用户权限控制<br>write_enable=YES，开启全局上传权限。<br>local_umask=022，本地用户的上传文件的umask设为022(系统默认是077，一般都可以改为022)。<br>anon_upload_enable=YES，允许匿名用户具有上传权限，很明显，必须启用write_enable=YES，才可以使用此项。同时我们还必须建立一个允许ftp用户可以读写的目录(前面说过，ftp是匿名用户的映射用户账号)。<br>anon_mkdir_write_enable=YES，允许匿名用户有创建目录的权利。<br>chown_uploads=YES，启用此项，匿名上传文件的属主用户将改为别的用户账户，注意，这里建议不要指定root账号为匿名上传文件的属主用户！<br>chown_username=whoever，当启用chown_uploads=YES时，所指定的属主用户账号，此处的whoever自然要用合适的用户账号来代替。<br>chroot_list_enable=YES，可以用一个列表限定哪些本地用户只能在自己目录下活动，如果chroot_local_user=YES，那么这个列表里指定的用户是不受限制的。<br>chroot_list_file=/etc/vsftpd.chroot_list，如果chroot_local_user=YES，则指定该列表(chroot_local_user)的保存路径(默认是/etc/vsftpd.chroot_list)。<br>nopriv_user=ftpsecure，指定一个安全用户账号，让FTP服务器用作完全隔离和没有特权的独立用户。这是vsftpd系统推荐选项。<br>async_abor_enable=YES，强烈建议不要启用该选项，否则将可能导致出错！<br>ascii_upload_enable=YES；ascii_download_enable=YES，默认情况下服务器会假装接受ASCⅡ模式请求但实际上是忽略这样的请求，启用上述的两个选项可以让服务器真正实现ASCⅡ模式的传输。<br>注意：启用ascii_download_enable选项会让恶意远程用户们在ASCⅡ模式下用“SIZE/big/file”这样的指令大量消耗FTP服务器的I/O资源。<br>这些ASCⅡ模式的设置选项分成上传和下载两个，这样我们就可以允许ASCⅡ模式的上传(可以防止上传脚本等恶意文件而导致崩溃)，而不会遭受拒绝服务攻击的危险。<br>(3)用户连接和超时选项<br>idle_session_timeout=600，可以设定默认的空闲超时时间，用户超过这段时间不动作将被服务器踢出。<br>data_connection_timeout=120，设定默认的数据连接超时时间。<br>(4)服务器日志和欢迎信息<br>dirmessage_enable=YES，允许为目录配置显示信息，显示每个目录下面的message_file文件的内容。<br>ftpd_banner=Welcome to blah FTP service，可以自定义FTP用户登录到服务器所看到的欢迎信息。<br>xferlog_enable=YES，启用记录上传/下载活动日志功能。<br>xferlog_file=/var/log/vsftpd.log，可以自定义日志文件的保存路径和文件名，默认是/var/log/vsftpd.log</p>
+<p><strong> NOTE：</strong><br>用户访问ftp目录的权限，跟linux本身用户访问文件系统的权限相同，所以设定权限可以参照linux系统的权限<br>chroot_list_enable最好设定，不然用户可以随便访问文件系统了<br>对于多个用户想指定一个目录而并使用默认值，可以使用local_root</p>
+<blockquote>
+<p>本地用户设置<br>local_enable=YES/NO（YES）<br>控制是否允许本地用户登入，YES 为允许本地用户登入，NO为不允许。默认值为YES。<br>local_root=/home/username<br>当本地用户登入时，将被更换到定义的目录下。默认值为各用户的家目录。<br>write_enable=YES/NO（YES）<br>是否允许登陆用户有写权限。属于全局设置，默认值为YES。<br>local_umask=022<br>本地用户新增档案时的umask 值。默认值为077。<br>file_open_mode=0755<br>本地用户上传档案后的档案权限，与chmod 所使用的数值相同。默认值为0666。</p>
+</blockquote>
+<p>最好关闭匿名登录<code>anonymous_enable=NO</code></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:luanburex.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分類</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/maven/">maven</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/01/22/vsftpd配置笔记/">vsftpd配置笔记</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/14/maven使用svn更新代码/">maven使用svn更新代码</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/13/配置Maven使用grunt/">配置Maven使用grunt</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/自动化测试的思考（二）分层测试/">自动化测试的思考（二）分层测试</a>
+      </li>
+    
+      <li>
+        <a href="/2016/01/12/自动化测试的思考（一）/">自动化测试的思考（一）</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">標籤</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/automation/">automation</a><small>2</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>1</small></li>
+  
+    <li><a href="/tags/java/">java</a><small>6</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/maven/">maven</a><small>6</small></li>
+  
+    <li><a href="/tags/node/">node</a><small>1</small></li>
+  
+    <li><a href="/tags/安装部署/">安装部署</a><small>7</small></li>
+  
+    <li><a href="/tags/自动化测试/">自动化测试</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 ReX Ren
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

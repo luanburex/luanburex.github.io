@@ -101,7 +101,10 @@
 </ol>
 <p><em>PS:</em>这些方法有点笨重，如果是web项目的，我推荐还是用最简单的解决方案。</p>
 <h2 id="u5C06jar_u5305_u5B89_u88C5_u5230_u672C_u5730_u5E93_u4E2D"><a href="#u5C06jar_u5305_u5B89_u88C5_u5230_u672C_u5730_u5E93_u4E2D" class="headerlink" title="将jar包安装到本地库中"></a>将jar包安装到本地库中</h2><p>只是一条命令的事情：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install:install-file -Dfile=my-jar.jar -DgroupId=org.richard -DartifactId=my-jar -Dversion=1.0 -Dpackaging=jar</span><br></pre></td></tr></table></figure></p>
-<p><strong>NOTE:</strong>有人还推荐使用in project repository<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;repository&#62;&#10;    &#60;id&#62;in-project&#60;/id&#62;&#10;    &#60;name&#62;In Project Repo&#60;/name&#62;&#10;    &#60;url&#62;file://$&#123;project.basedir&#125;/lib&#60;/url&#62;&#10;&#60;/repository&#62;&#10;&#10;&#60;dependency&#62;&#10;    &#60;groupId&#62;org.richard&#60;/groupId&#62;&#10;    &#60;artifactId&#62;my-jar&#60;/artifactId&#62;&#10;    &#60;version&#62;1.0&#60;/version&#62;&#10;&#60;/dependency&#62;</span><br></pre></td></tr></table></figure></p>
+<p><strong>NOTE:</strong>有人还推荐使用in project repository</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;repository&#62;&#10;    &#60;id&#62;in-project&#60;/id&#62;&#10;    &#60;name&#62;In Project Repo&#60;/name&#62;&#10;    &#60;url&#62;file://$&#123;project.basedir&#125;/repo&#60;/url&#62;&#10;&#60;/repository&#62;&#10;&#10;&#60;dependency&#62;&#10;    &#60;groupId&#62;com.example&#60;/groupId&#62;&#10;    &#60;artifactId&#62;mylib&#60;/artifactId&#62;&#10;    &#60;version&#62;1.0&#60;/version&#62;&#10;&#60;/dependency&#62;</span><br></pre></td></tr></table></figure>
+<p>安装到本地的repo里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn deploy:deploy-file -Durl=file:///path/to/yourproject/repo/ -Dfile=mylib-1.0.jar -DgroupId=com.example -DartifactId=mylib -Dpackaging=jar -Dversion=1.0</span><br></pre></td></tr></table></figure></p>
+<p>然后执行mvn命令的时候带-U<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install -U</span><br></pre></td></tr></table></figure></p>
 <p>这也是一种解决方案把。</p>
 
       
@@ -154,6 +157,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/01/22/vsftpd配置笔记/">vsftpd配置笔记</a>
+      </li>
+    
+      <li>
         <a href="/2016/01/14/maven使用svn更新代码/">maven使用svn更新代码</a>
       </li>
     
@@ -167,10 +174,6 @@
     
       <li>
         <a href="/2016/01/12/自动化测试的思考（一）/">自动化测试的思考（一）</a>
-      </li>
-    
-      <li>
-        <a href="/2016/01/12/maven入门（二）创建一个maven工程/">maven入门（二）创建一个maven工程</a>
       </li>
     
   </ul>
